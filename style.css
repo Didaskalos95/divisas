@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+   box-sizing: border-box;
+}
+body{
+	height: 100vh;
+	font-family: "Poppins", sans-serif;
+	background-color: #A4CAC9;
+	color:#072C2C;
+
+}
+h1{
+
+ text-align: center;
+margin-bottom: 16px;
+text-transform: uppercase;
+
+}
+span{
+	display: inline-block;
+}
+.flex{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+}
+.contenedor{
+	display: grid;
+	grid-template-columns: repeat(3,250px);
+	grid-gap: 16px;
+
+}
+
+.container{
+	background-color: #fefce7;
+	padding: 10px;
+	gap: 5px;
+	border-radius: 4px;
+	transition: background-color .3s ease;
+	position: relative;
+	overflow: hidden;
+}
+.container:hover{
+	box-shadow: 0 0 0 2px #8975AD;
+}
+
+.seleccionado{
+	background-color: #51C28A;
+	color:white;
+	box-shadow: 0 0 5px white;
+}
+.container2, .container3{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+
+}
+.container3{
+	align-items: center;
+}
+.bandera{
+	width: 45px;
+	height: 25px;
+	background-size: cover;
+	background-position: center;
+	border-radius: 2px;
+	filter: sepia(50%);
+	cursor: pointer;
+	position: relative;
+	overflow: hidden; 
+}
+
+.bander{
+	position: absolute;
+	left: 0;
+	top:0;
+	right: 0;
+	bottom: 0;
+ 	background-color: #8975AD;
+   background-image: url(images/blanco.svg);
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: 20px 20px;
+   transition: opacity .3s ease;
+   border-radius: 2px;
+   opacity: 0;
+  }
+
+.nombre{
+	text-align: left;
+	width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.nombre:hover{
+ padding-left: 18px;
+ background-image: url('images/arriba.svg');
+ background-position: left center;
+ background-repeat: no-repeat;
+ background-size: 15px 15px;
+}
+input{
+	display: inline-block;
+	width: 70%;
+   outline: none;
+   border: none;
+   background-color: #fefce7;
+   border-radius: 2px;
+   border-bottom: 1px solid #ccc;
+   height: 30px;
+   padding: 5px;
+   font-size: 16px;
+   cursor: pointer;
+}
+input::placeholder{
+	color: #bbb;
+}
+
+input:focus{
+	 border-bottom: 2px solid #999;;
+}
+
+
+.modal{
+	background-color: rgba(255,255,255,.9);
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	opacity: 0;
+	transition: opacity .5s ease;
+    pointer-events: auto;
+}
+
+
+.modal>h2{
+	margin-bottom: 10px;
+	color: #005971;
+}
+.cerrar{
+	position: absolute;
+	top: 50px;
+	right: 200px;
+	width: 30px;
+	height: 30px;
+	background-image: url('images/cerrar.svg');
+	background-size: cover;
+	cursor: pointer;
+}
+.oculto{
+	visibility: hidden;
+}
+.lista_faltantes{
+	display: grid;
+	grid-template-columns: repeat(2,200px);
+	gap:5px;
+	background-color: white;
+	padding: 10px;
+	border-radius: 8px;
+	border: 2px solid #bbb;
+}
+.elemento_faltante{
+	border-radius: 4px;
+	border: 2px solid #bbb;
+	padding: 5px;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+.elemento_faltante:hover{
+	background-color: #8975AD;
+}
+.bandera_faltante{
+	width: 40px;
+	height: 25px;
+	background-size: cover;
+	background-position: center;
+	border-radius: 2px;
+	filter: sepia(50%); 
+}
+.nombre_faltante{
+	width: 140px;
+	overflow: hidden;
+   white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 480px) {
+  body{
+  	height: 100svh;
+  	padding: 0 10px;
+  }
+  h1{
+  	font-size: 1.3em;
+  	margin-bottom: 10px;
+  	
+  }
+  .modal>h2{
+  	text-align: left;
+  }
+ .contenedor{
+ 	    margin:0;
+ 	    width: 100%;
+ 		grid-template-columns: repeat(2,1fr);
+ 		grid-gap:10px;
+ }
+ .elemento_faltante{
+ 	padding: 3px;
+
+ }
+ .cerrar{
+ 	top:5px;
+ 	right: 5px;
+ 	width: 20px;
+	height: 20px;
+ }
+
+ .lista_faltantes{
+	grid-template-columns: repeat(2,1fr);
+	padding: 0 5px;
+	border:none;
+
+}
+
+}
