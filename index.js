@@ -3,15 +3,53 @@ const body=document.querySelector('.contenedor');
 const modal=document.querySelector('.modal');
 const lista_faltantes=document.querySelector('.lista_faltantes');
 const cerrar=document.querySelector('.cerrar');
+const mas_paises=document.querySelector('.mas_paises');
 const size=window.innerWidth;
 
 let indice;
 let faltantes=[];
 let contador=0;
-//let indice;
 let estado_botones=0;
+let cadena,cadenaNuevos,cadenaTemporal;
+let limite;
+var seleccionados;
+var object1;
+var object2;
 
 cerrar.addEventListener('click',()=>{
+	cadenaNuevos=[];
+	cadenaTemporal=[];
+	seleccionados= document.querySelectorAll('.seleccionado');
+
+	for(let i=0;i<seleccionados.length;i++){
+		cadenaNuevos.push(parseInt(seleccionados[i].id));
+	}
+
+	for(let i=0;i<cadena.length;i++){
+		if(cadenaNuevos.includes(cadena[i])){
+		    cadenaTemporal.push(cadena[i]);
+		}
+		else{
+     
+       document.querySelector(`.container[id='${cadena[i]}']`).querySelector('.bandera').remove();
+       document.querySelector(`.container[id='${cadena[i]}']`).querySelector('.nombre').remove();
+       document.querySelector(`.container[id='${cadena[i]}']`).querySelector('span').remove();
+       document.querySelector(`.container[id='${cadena[i]}']`).querySelector('input').remove();
+       document.querySelector(`.container[id='${cadena[i]}']`).querySelector('.container2').remove();
+       document.querySelector(`.container[id='${cadena[i]}']`).querySelector('.container3').remove();
+       document.querySelector(`.container[id='${cadena[i]}']`).remove(); 
+		}
+	}
+	for(let i=0;i<cadenaNuevos.length;i++){
+		if(!cadena.includes(cadenaNuevos[i])){
+		    cadenaTemporal.push(cadenaNuevos[i]);
+		    llenarPagina(object1,cadenaNuevos[i]);
+		}
+	}
+
+ 	cadena=cadenaTemporal;
+	llenarFaltantes();
+	convertirDivisas(object1,object2);
 	modal.style.opacity='0';
 	setTimeout(e=>modal.classList.toggle('oculto'),500);
 });
@@ -33,51 +71,38 @@ async function leerPaises() {
   convertirDivisas(paises,divisas);
 }
 
+mas_paises.addEventListener('click',()=>{
+      modal.classList.toggle('oculto');
+    	modal.querySelector('h2').textContent=`Selecciona paises de esta lista:`;
+    	modal.style.opacity='1';
+});
+
 
 function llenarPaises(obj,obj2){
-	
-	let centro=[];
-	let norte=[];
-	let sur=[];
-	let cadena=[7,15,22,1,5,6,8,9,13,26,33,34];
-	if(size>480){
-
-		for (let i=0;i<obj.length;i++){
-
-			if(obj[i].continent=='Centro'){
-				centro.push(i);
-			}
-			if(obj[i].continent=='Norte'){
-				norte.push(i);
-			}
-			if(obj[i].continent=='Sur'){
-				sur.push(i);
-			}
+	 object1=obj;
+	 object2=obj2;
+	 if(size>480){
+	 cadena=[7,15,22,1,5,6,8,9,25,26,33,34];
+	 limite=12;
+		}
+		else{
+		cadena=[7,15,22,1,5,6,8,9,26,33];
+		limite=10;
 		}
 
-		norte.forEach(e=>llenarPagina(obj,e));
-		sur.forEach(e=>llenarPagina(obj,e));
-		for(let j=0;j<centro.length;j++){
-			if(j<3){
-				 llenarPagina(obj,centro[j]);
-			}
-	    else{
-	    	faltantes.push(centro[j]);
-	    }
-		}
-	}
-	else{
-		cadena.forEach(e=>llenarPagina(obj,e));
-		for(let i=0;i<35;i++){
+	 cadena.forEach(e=>llenarPagina(obj,e));
+	 llenarFaltantes();
+	 elementosFaltantes(obj,obj2);
+}
+
+function llenarFaltantes(){
+	faltantes=[];
+	for(let i=0;i<35;i++){
 			if (cadena.indexOf(i)==-1){
 				faltantes.push(i);
 			}
 		}
-	}
-
-	elementosFaltantes(obj,obj2);
 }
-
 
 function llenarPagina(obj,i){
 
@@ -106,17 +131,20 @@ function llenarPagina(obj,i){
 		nombre.classList.add('nombre');
 		nombre.textContent=obj[i].name;
 
-		container2.appendChild(nombre);
+		
 		container2.appendChild(bandera);
+		container2.appendChild(nombre);
 
 		input=document.createElement('input');
 		input.setAttribute('type','text');
 		input.setAttribute('placeholder',`${obj[i].currency.symbol_native} 0.0`);
-		container3.appendChild(input);
+		
         
 	  codigo=document.createElement('span');
 	  codigo.textContent=obj[i].currency.code;
+
 	  container3.appendChild(codigo);
+	  container3.appendChild(input);
 
 	  if(size>480){
 	     bandera.addEventListener('mouseenter',agregarIcono);
@@ -126,13 +154,13 @@ function llenarPagina(obj,i){
 	     bandera.addEventListener('click',agregarIcono);
 	  }
 
-    nombre.addEventListener('click', ()=>{
+   /* nombre.addEventListener('click', ()=>{
     	indice=container.id;
     	modal.classList.toggle('oculto');
     	modal.querySelector('h2').textContent=`Cambiar ${obj[indice].name} por:`;
     	modal.style.opacity='1';
     	
-    });
+    });*/
 
     bandera.addEventListener('click',(e)=>{
       contador++;
@@ -160,12 +188,12 @@ function llenarPagina(obj,i){
             caja.classList.toggle('seleccionado');
  
             container.querySelector('.bandera').style.backgroundImage=`url('${obj[indice].flag}')`;
-						container.querySelector('.container2>span:nth-child(1)').textContent=obj[indice].name;
+						container.querySelector('.container2>span:nth-child(2)').textContent=obj[indice].name;
 						container.querySelector('.container3>span').textContent=obj[indice].currency.code;
 						container.querySelector('input').placeholder=obj[indice].currency.symbol_native;
 						
 						caja.querySelector('.bandera').style.backgroundImage=`url('${obj[container.id].flag}')`;
-						caja.querySelector('.container2>span:nth-child(1)').textContent=obj[container.id].name;
+						caja.querySelector('.container2>span:nth-child(2)').textContent=obj[container.id].name;
 						caja.querySelector('.container3>span').textContent=obj[container.id].currency.code;
 						caja.querySelector('input').placeholder=obj[container.id].currency.symbol_native;
             caja.querySelector('.bander').classList.remove('oculto');
@@ -255,11 +283,47 @@ function convertirDivisas(obj,obj2){
 		
 
 function elementosFaltantes(obj,obj2){
-	let elemento,bandera,nombre;
+	let elemento,bandera,nombre, contar;
 
-	for(let i=0;i<faltantes.length;i++){
+	for(let i=0;i<35;i++){
 
-	  		elemento=document.createElement('div');
+
+				elemento=document.createElement('div');
+	  		elemento.classList.add('elemento_faltante');
+	  		elemento.setAttribute('id',i);
+
+	  		bandera= document.createElement('span');
+	  		bandera.classList.add('bandera_faltante');
+	  		bandera.style.backgroundImage=`url('${obj[i].flag}')`;
+	  		
+	  		nombre=document.createElement('span');
+	  		nombre.classList.add('nombre_faltante');
+	  		nombre.textContent=obj[i].name;
+
+	  		elemento.appendChild(bandera);
+	  		elemento.appendChild(nombre);
+	  		if (faltantes.indexOf(i)==-1){
+				elemento.classList.toggle('seleccionado');
+			  }
+				elemento.addEventListener('click',e=>{
+					contar= document.querySelectorAll('.seleccionado').length;
+
+					if(e.currentTarget.classList.contains('seleccionado')){
+						e.currentTarget.classList.toggle('seleccionado');
+
+					}
+					else{
+						if(contar==limite){
+             alert('Limite Maximo alcanzado,deseleccione un pais primero');
+            }
+            else{
+            	e.currentTarget.classList.toggle('seleccionado');
+            }
+					}           
+				});
+	  		lista_faltantes.appendChild(elemento);  
+}
+	  	/*	elemento=document.createElement('div');
 	  		elemento.classList.add('elemento_faltante');
 	  		elemento.setAttribute('id',faltantes[i]);
 
@@ -295,7 +359,7 @@ function elementosFaltantes(obj,obj2){
 		     				
 		  	});
 	  		lista_faltantes.appendChild(elemento);  
-		}
+		}*/
 }
 
 

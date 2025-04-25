@@ -8,7 +8,7 @@
 body{
 	height: 100vh;
 	font-family: "Poppins", sans-serif;
-	background-color: #A4CAC9;
+	background-color: #D9EDDF;
 	color:#072C2C;
 
 }
@@ -28,11 +28,34 @@ span{
 	flex-direction: column;
 	justify-content: center;
 }
+.animacion{
+	height: 80px;
+	width: 782px;
+	border-radius: 5px;
+	background-color: #fefce7;
+	margin-bottom: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+}
+.mas_paises{
+position: absolute;
+top: 10px;
+right: -20px;
+width: 20px;
+height: 20px;
+ background-image: url(images/puntos.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  cursor: pointer;
+}
+
 .contenedor{
 	display: grid;
 	grid-template-columns: repeat(3,250px);
 	grid-gap: 16px;
-
+ position: relative;
 }
 
 .container{
@@ -43,15 +66,16 @@ span{
 	transition: background-color .3s ease;
 	position: relative;
 	overflow: hidden;
+	box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);
 }
 .container:hover{
-	box-shadow: 0 0 0 2px #8975AD;
+	box-shadow: 0 0 0 3px #51C28A;
 }
 
 .seleccionado{
 	background-color: #51C28A;
-	color:white;
-	box-shadow: 0 0 5px white;
+	/*color:white;
+	box-shadow: 0 0 3px white;*/
 }
 .container2, .container3{
 	width: 100%;
@@ -91,7 +115,7 @@ span{
   }
 
 .nombre{
-	text-align: left;
+	text-align: right;
 	width: 150px;
     overflow: hidden;
     white-space: nowrap;
@@ -99,13 +123,13 @@ span{
     cursor: pointer;
     transition: all .3s ease;
 }
-.nombre:hover{
+/*.nombre:hover{
  padding-left: 18px;
  background-image: url('images/arriba.svg');
- background-position: left center;
+ background-position: right center;
  background-repeat: no-repeat;
  background-size: 15px 15px;
-}
+}*/
 input{
 	display: inline-block;
 	width: 70%;
@@ -160,39 +184,44 @@ input:focus{
 }
 .lista_faltantes{
 	display: grid;
-	grid-template-columns: repeat(2,200px);
+	grid-template-columns: repeat(3,300px);
 	gap:5px;
 	background-color: white;
-	padding: 10px;
+	/*padding: 10px;
 	border-radius: 8px;
-	border: 2px solid #bbb;
+	border: 2px solid #bbb;*/
 }
 .elemento_faltante{
 	border-radius: 4px;
 	border: 2px solid #bbb;
 	padding: 5px;
-    cursor: pointer;
-    transition: background-color .3s ease;
+  cursor: pointer;
+  transition: background-color .3s ease;
+  display: flex;
 }
 .elemento_faltante:hover{
-	background-color: #8975AD;
+	box-shadow: 0 0 0 2px #51C28A inset;
+	border: 2px solid #51C28A;
 }
 .bandera_faltante{
-	width: 40px;
+	width: 45px;
 	height: 25px;
 	background-size: cover;
 	background-position: center;
 	border-radius: 2px;
-	filter: sepia(50%); 
+	filter: sepia(50%);
+	overflow: hidden; 
 }
 .nombre_faltante{
-	width: 140px;
+	/*width: 140px;
 	overflow: hidden;
    white-space: nowrap;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;*/
   margin-left: 5px;
 }
-
+.video_mobile{
+	display: none;
+}
 @media only screen and (max-width: 480px) {
   body{
   	height: 100svh;
@@ -229,5 +258,20 @@ input:focus{
 	border:none;
 
 }
+.animacion{
+	width: 100%;
+}
+.video_mobile{
+	display: block;
+	width: 100%;
+}
+.video_desktop{
+	display: none;
+}
 
+.mas_paises{
+
+right: 0;
+top: -150px;
+}
 }
