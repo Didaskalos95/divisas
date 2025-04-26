@@ -8,7 +8,7 @@
 body{
 	height: 100vh;
 	font-family: "Poppins", sans-serif;
-	background-color: #D9EDDF;
+	background-color: #F4F0FF;
 	color:#072C2C;
 
 }
@@ -17,6 +17,7 @@ h1{
  text-align: center;
 margin-bottom: 16px;
 text-transform: uppercase;
+
 
 }
 span{
@@ -40,15 +41,21 @@ span{
 }
 .mas_paises{
 position: absolute;
-top: 10px;
-right: -20px;
-width: 20px;
-height: 20px;
+top: -155px;
+right: 0px;
+width: 40px;
+height: 40px;
  background-image: url(images/puntos.png);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 20px 20px;
+  background-size: 40px 40px;
   cursor: pointer;
+  border-radius: 50%;
+  transition: all .3 ease;
+}
+.mas_paises:hover{
+	box-shadow: 0px 0px 5px 3px #51C28A;
+
 }
 
 .contenedor{
@@ -66,7 +73,7 @@ height: 20px;
 	transition: background-color .3s ease;
 	position: relative;
 	overflow: hidden;
-	box-shadow: 0 0 0 2px rgba(0, 0, 0, .1);
+	box-shadow: 0 0 0 3px rgba(0, 0, 0, .2);
 }
 .container:hover{
 	box-shadow: 0 0 0 3px #51C28A;
@@ -213,6 +220,10 @@ input:focus{
 	overflow: hidden; 
 }
 .nombre_faltante{
+	overflow: hidden;
+	 white-space: nowrap;
+	 width: 130px;
+  text-overflow: ellipsis;
 	/*width: 140px;
 	overflow: hidden;
    white-space: nowrap;
@@ -230,10 +241,16 @@ input:focus{
   h1{
   	font-size: 1.3em;
   	margin-bottom: 10px;
-  	
+  	line-height: 1.1;
+  	width: max(380px);
+  }
+  .modal{
+  	height: 800px;
+  	scroll-behavior: auto;
   }
   .modal>h2{
   	text-align: left;
+  	font-size: 20px;
   }
  .contenedor{
  	    margin:0;
@@ -269,9 +286,4 @@ input:focus{
 	display: none;
 }
 
-.mas_paises{
-
-right: 0;
-top: -150px;
-}
 }

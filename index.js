@@ -73,7 +73,7 @@ async function leerPaises() {
 
 mas_paises.addEventListener('click',()=>{
       modal.classList.toggle('oculto');
-    	modal.querySelector('h2').textContent=`Selecciona paises de esta lista:`;
+    	modal.querySelector('h2').textContent=`Selecciona paises de esta lista`;
     	modal.style.opacity='1';
 });
 
@@ -323,43 +323,7 @@ function elementosFaltantes(obj,obj2){
 				});
 	  		lista_faltantes.appendChild(elemento);  
 }
-	  	/*	elemento=document.createElement('div');
-	  		elemento.classList.add('elemento_faltante');
-	  		elemento.setAttribute('id',faltantes[i]);
-
-	  		bandera= document.createElement('span');
-	  		bandera.classList.add('bandera_faltante');
-	  		bandera.style.backgroundImage=`url('${obj[faltantes[i]].flag}')`;
-	  		
-	  		nombre=document.createElement('span');
-	  		nombre.classList.add('nombre_faltante');
-	  		nombre.textContent=obj[faltantes[i]].name;
-
-	  		elemento.appendChild(bandera);
-	  		elemento.appendChild(nombre);
-	  		elemento.addEventListener('dblclick',e=>{
-
-              let caja=document.querySelector(`.container[id='${indice}']`);		    
-		     			caja.id=faltantes[i];
-		     			
-		     			caja.querySelector('.bandera').style.backgroundImage=`url('${obj[faltantes[i]].flag}')`;
-				 			caja.querySelector('.container2>span:nth-child(1)').textContent=obj[faltantes[i]].name;
-				 			caja.querySelector('.container3>span').textContent=obj[faltantes[i]].currency.code;
-				 			caja.querySelector('input').placeholder=obj[faltantes[i]].currency.symbol_native;
-				 			if(caja.querySelector('input').value!=''){
-				 				caja.querySelector('input').value=((caja.querySelector('input').value/obj2.data[obj[indice].currency.code].value)*obj2.data[obj[faltantes[i]].currency.code].value).toFixed(2);
-				 			
-				 			}
-		     			e.currentTarget.querySelector('.bandera_faltante').style.backgroundImage=`url(${obj[indice].flag})`;
-		     			e.currentTarget.querySelector('.nombre_faltante').textContent=obj[indice].name;
-		     			faltantes[i]=indice;
-		     			e.currentTarget.id=indice;
-		     			modal.style.opacity='0';
-		     			setTimeout(e=>modal.classList.toggle('oculto'),500);
-		     				
-		  	});
-	  		lista_faltantes.appendChild(elemento);  
-		}*/
+	  	
 }
 
 
