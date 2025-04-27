@@ -8,7 +8,8 @@
 body{
 	height: 100vh;
 	font-family: "Poppins", sans-serif;
-	background-color: #f2f6f9;
+	/*background-color: #f2f6f9;*/
+	background-color: #daebf3;
 	color:#072C2C;
 
 }
@@ -67,7 +68,8 @@ height: 40px;
 }
 
 .container{
-	background-color: #fefce7;
+	/*background-color: #fefce7;*/
+	background-color: white;
 	padding: 10px;
 	gap: 5px;
 	border-radius: 4px;
@@ -82,8 +84,8 @@ height: 40px;
 
 .seleccionado{
 	background-color: #51C28A;
-	/*color:white;
-	box-shadow: 0 0 3px white;*/
+	color:white;
+	box-shadow: 0 0 3px white;
 }
 .container2, .container3{
 	width: 100%;
@@ -143,7 +145,8 @@ input{
 	width: 70%;
    outline: none;
    border: none;
-   background-color: #fefce7;
+ /*  background-color: #fefce7;*/
+ background-color: white;
    border-radius: 2px;
    border-bottom: 1px solid #ccc;
    height: 30px;
@@ -238,7 +241,7 @@ input:focus{
   body{
   	height: 100svh;
   	padding: 0 10px;
-  		background-color: #e0ecf9;
+  		/*background-color: #e0ecf9;*/
 
   }
   h1{
