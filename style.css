@@ -8,7 +8,7 @@
 body{
 	height: 100vh;
 	font-family: "Poppins", sans-serif;
-	background-color: #F4F0FF;
+	background-color: #F0F5FF;
 	color:#072C2C;
 
 }
@@ -38,6 +38,7 @@ span{
 	display: flex;
 	align-items: center;
 	justify-content: end;
+		box-shadow: 0 0 0 3px rgba(0, 0, 0, .15);
 }
 .mas_paises{
 position: absolute;
@@ -73,7 +74,7 @@ height: 40px;
 	transition: background-color .3s ease;
 	position: relative;
 	overflow: hidden;
-	box-shadow: 0 0 0 3px rgba(0, 0, 0, .2);
+	box-shadow: 0 0 0 3px rgba(62, 71, 86, .25);
 }
 .container:hover{
 	box-shadow: 0 0 0 3px #51C28A;
