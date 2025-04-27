@@ -8,7 +8,7 @@
 body{
 	height: 100vh;
 	font-family: "Poppins", sans-serif;
-	background-color: #F0F5FF;
+	background-color: #f2f6f9;
 	color:#072C2C;
 
 }
@@ -238,6 +238,8 @@ input:focus{
   body{
   	height: 100svh;
   	padding: 0 10px;
+  		background-color: #eef5fb;
+
   }
   h1{
   	font-size: 1.3em;
